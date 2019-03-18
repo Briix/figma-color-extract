@@ -7,7 +7,7 @@ function ratioToRGB ({ r, g, b }) {
 }
 
 export default function getColors (document, nodeType, nameRegex) {
-  nodeType = nodeType || 'RECTANGLE'
+  nodeType = nodeType || ['RECTANGLE']
   nameRegex = nameRegex || /.*/g
 
   if (!document) {
@@ -19,7 +19,7 @@ export default function getColors (document, nodeType, nameRegex) {
   function visit (node) {
     if (
       node.name.match(nameRegex)
-      && node.type === nodeType
+      && nodeType.includes(node.type)
       && node.fills.length
       && node.fills[0].color
     ) {
