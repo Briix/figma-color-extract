@@ -1,6 +1,6 @@
 {
   "name": "figma-color-extract",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Extract colors from a Figma document",
   "main": "index.js",
   "author": "Simon Brix",
