@@ -14,8 +14,8 @@ fce(document)
 ```
 
 `figma-color-extract` expects a [Figma document](https://www.figma.com/developers/docs#node-types)
-and takes two optional parameters (`nodeType` & `nameRegex`) and returns an
-array `{name: string, color: {r: number, g: number, b: number}}[]`.
+and takes three optional parameters (`nodeType`, `nameRegex` and `channelType`) and returns an
+array `{name: string, color: {r: number, g: number, b: number}}[]` or when providing `rgba` as the `channelType `fce(document, '', '', rgba')` -> `{name: string, color: {r: number, g: number, b: number, a: number}}[]`.
 
 `name` is the name of the node and `color` is an rgb representation of the
 first fill for that node.
