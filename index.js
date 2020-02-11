@@ -1,12 +1,12 @@
-function ratioToRGB({ r, g, b }) {
+function ratioToRGB ({ r, g, b }) {
   return ({
     r: r * 255,
     g: g * 255,
-    b: b * 255,
+    b: b * 255
   })
 }
 
-function ratioToRGBA({ r, g, b, a }) {
+function ratioToRGBA ({ r, g, b, a }) {
   return ({
     r: r * 255,
     g: g * 255,
@@ -15,7 +15,7 @@ function ratioToRGBA({ r, g, b, a }) {
   })
 }
 
-export default function getColors(document, channelType, nodeType, nameRegex) {
+export default function getColors(document, nodeType, nameRegex, channelType) {
   nodeType = nodeType || ['RECTANGLE']
   nameRegex = nameRegex || /.*/g
   channelType = channelType || 'rgb'
@@ -26,7 +26,7 @@ export default function getColors(document, channelType, nodeType, nameRegex) {
 
   let results = []
 
-  function visit(node) {
+  function visit (node) {
 
     if (
       node.name.match(nameRegex)
@@ -39,10 +39,8 @@ export default function getColors(document, channelType, nodeType, nameRegex) {
 
       if (channelType === 'rgba') {
 
-        let newColorObj = {
-          r: node.fills[0].color.r,
-          g: node.fills[0].color.g,
-          b: node.fills[0].color.b,
+        const newColorObj = {
+          ...node.fills[0].color,
           a: node.fills[0].opacity,
         };
 
@@ -56,7 +54,7 @@ export default function getColors(document, channelType, nodeType, nameRegex) {
 
       const { name } = node
 
-      results = [...results, ...[{ name, color }]]
+      results = [...results, ...[{name, color}]]
     }
 
     if ('children' in node) {
